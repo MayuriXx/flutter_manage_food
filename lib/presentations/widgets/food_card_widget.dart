@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_manage_food/core/utils/constants.dart';
 
 class FoodCardWidget extends StatelessWidget {
   const FoodCardWidget({
@@ -20,58 +19,34 @@ class FoodCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 12.0,
-              top: 24.0,
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  picture,
-                  width: 20,
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 12.0,
-                  ),
-                  child: Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Text(
-                  quantity.toString(),
-                ),
-              ],
-            ),
+      child: ListTile(
+        leading: Image.asset(
+          picture,
+          width: 20,
+          height: 20,
+        ),
+        title: Text(
+          name,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 44.0,
-              bottom: 8.0,
-              top: 4.0,
+        ),
+        trailing: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              quantity.toString(),
             ),
-            child: Row(
-              children: [
-                const Text('Expired Date: '),
-                Text(
-                  expiredDate.toString(),
-                ),
-                const Text(
-                  Place.fridge,
-                ),
-              ],
+            Text(
+              place,
             ),
-          ),
-        ],
+          ],
+        ),
+        subtitle: Text(
+          'Expired Date: $expiredDate',
+        ),
       ),
     );
   }
